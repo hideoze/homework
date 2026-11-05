@@ -1,0 +1,11 @@
+{
+  "schema_version":1,
+  "notice":"Calibration/evaluation only. Neither feature collection nor diagnose.py may read this file. Runtime values must be re-measured on the target host.",
+  "cases":{
+    "C00":{"name":"正常负对照","expected":"no_supported_issue","fix":{},"min_speedup":1.0,"proof":"Uniform row counts, contiguous SIMD kernel, one parallel region; no injected defect. This does not prove global optimality."},
+    "C01":{"name":"未向量化","expected":"under_vectorization","fix":{"row_kernel":"simd"},"min_speedup":1.15,"proof":"Identical CSR, B layout, row ownership and loop order. Scalar translation unit disables auto-vectorization. Verify packed/scalar arithmetic in disassembly."},
+    "C02":{"name":"循环顺序不佳","expected":"loop_order_sensitive","fix":{"row_kernel":"scalar"},"min_speedup":1.15,"proof":"Both variants use the SAME non-vectorizing translation unit. Only f/q loop order changes. Improvement establishes loop-order sensitivity, not DRAM bandwidth saturation."},
+    "C03":{"name":"线程负载不均","expected":"load_imbalance","fix":{"partition":"nnz"},"min_speedup":1.15,"requires_parallel":true,"proof":"First 1/8 of rows contain 64x as many nonzeros as remaining rows. Contiguous equal-row partition puts disproportionate work on early workers; nnz-balanced boundaries change only row ownership."},
+    "C04":{"name":"并行任务过碎","expected":"parallel_region_overhead","fix":{"chunk_rows":0},"min_speedup":1.15,"requires_parallel":true,"proof":"Same SIMD row kernel and uniform work; baseline enters one OpenMP region per 16 rows, reference enters one per SpMM. No sleeps or dummy work."}
+  }
+}

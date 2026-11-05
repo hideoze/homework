@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "description": "Small deterministic training/diagnostic suite. Expectations are deliberately stored elsewhere.",
+  "cases": [
+    {"id":"C00", "config":{"matrix":"uniform","m":4096,"k":4096,"n":128,"degree":16,"seed":101,"threads":"parallel","row_kernel":"simd","partition":"rows","chunk_rows":0}},
+    {"id":"C01", "config":{"matrix":"uniform","m":4096,"k":4096,"n":256,"degree":32,"seed":102,"threads":1,"row_kernel":"scalar","partition":"rows","chunk_rows":0}},
+    {"id":"C02", "config":{"matrix":"uniform","m":4096,"k":16384,"n":128,"degree":32,"seed":103,"threads":1,"row_kernel":"gather","partition":"rows","chunk_rows":0}},
+    {"id":"C03", "config":{"matrix":"skew","m":8192,"k":8192,"n":64,"degree":4,"seed":104,"threads":"parallel","row_kernel":"simd","partition":"rows","chunk_rows":0}},
+    {"id":"C04", "config":{"matrix":"uniform","m":2048,"k":4096,"n":64,"degree":4,"seed":105,"threads":"parallel","row_kernel":"simd","partition":"rows","chunk_rows":16}}
+  ]
+}

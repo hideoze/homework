@@ -1,0 +1,54 @@
+{
+  "os": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "machine": "x86_64",
+  "cpu_model": "AMD EPYC 9V74 80-Core Processor",
+  "virtualized_flag": true,
+  "allowed_cpus": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "selected_cpus": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "threads": 4,
+  "cgroup_quota_cores": 4.0,
+  "cgroup_cpu_max": "400000 100000",
+  "perf_event_paranoid": "2",
+  "compiler": "g++ (Debian 14.2.0-19) 14.2.0",
+  "binary_sha256": "a2cda1c587ef073df6fc4ca15783232387fe1ade708214d1af488e2ac0398001",
+  "cache_topology_reported": [
+    {
+      "level": "1",
+      "type": "Data",
+      "size": "32K",
+      "shared_cpu_list": "0-1"
+    },
+    {
+      "level": "1",
+      "type": "Instruction",
+      "size": "32K",
+      "shared_cpu_list": "0-1"
+    },
+    {
+      "level": "2",
+      "type": "Unified",
+      "size": "1024K",
+      "shared_cpu_list": "0-1"
+    },
+    {
+      "level": "3",
+      "type": "Unified",
+      "size": "32768K",
+      "shared_cpu_list": "0-4"
+    }
+  ],
+  "memory_policy": "default OS policy; initialization is serial; no NUMA binding is implemented",
+  "pinning": "one selected logical CPU per reported physical core; OMP_PLACES explicit",
+  "fingerprint": "cbee8b22519f879453401754aad5072339b3018087bbccf160d6940a23610d5d"
+}

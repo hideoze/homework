@@ -1,0 +1,7 @@
+build/
+__pycache__/
+*.py[cod]
+# Keep historical summary files, but do not accidentally commit server runs.
+results/*
+!results/demo/
+!results/tests.log
